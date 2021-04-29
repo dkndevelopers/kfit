@@ -7,7 +7,9 @@
 </head> 
     
     
-<body>
+<body>    
+    
+    <div class="navbar">
     <div class="topnav" id="myTopnav">
         
   <a href="#home" class="active">Home</a>
@@ -27,19 +29,46 @@
   <a href="#about">About</a>
   <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
 </div>
+    </div>
+   
+ 
+<!-- Slideshow container -->
+    <div class="separator">
+<div class="slideshow-container">
 
-    
-    
-<div class="main image">
-    
-    
-    
+  <!-- Full-width images with number and caption text -->
+  <div class="mySlides fade">
+ 
+    <img src="images/shorts%20man.jpg" style="width:100%" class="responsive">
+    <div class="text">Caption Text</div>
+  </div>
+
+  <div class="mySlides fade">
+
+    <img src="images/Image3.jpg" style="width:100%" class="responsive">
+    <div class="text">Caption Two</div>
+  </div>
+
+  <div class="mySlides fade">
+
+    <img src="images/a-clean-gym.jpg" style="width:100%" class="responsive">
+    <div class="text">Caption Three</div>
+  </div>
+
+  <!-- Next and previous buttons -->
+  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+  <a class="next" onclick="plusSlides(1)">&#10095;</a>
 </div>
-    
-    
-    
-        
-    
+<br>
+
+<!-- The dots/circles -->
+<div style="text-align:center">
+  <span class="dot" onclick="currentSlide(1)"></span>
+  <span class="dot" onclick="currentSlide(2)"></span>
+  <span class="dot" onclick="currentSlide(3)"></span>
+</div>
+        </div>
+<! ---------------------------------------------------------------------------------------------------------------------- >      
 <script>
 function myFunction() {
   var x = document.getElementById("myTopnav");
@@ -51,7 +80,7 @@ function myFunction() {
 }
     
     
-    
+ 
     // When the user scrolls the page, execute myFunction
 window.onscroll = function() {myFunction2()};
 
@@ -69,6 +98,61 @@ function myFunction2() {
     navbar.classList.remove("sticky");
   }
 }
+    
+   
+    
+    
+    
+    var slideIndex = 0;
+showSlides();
+var slides,dots;
+
+function showSlides() {
+    var i;
+    slides = document.getElementsByClassName("mySlides");
+    dots = document.getElementsByClassName("dot");
+    for (i = 0; i < slides.length; i++) {
+       slides[i].style.display = "none";  
+    }
+    slideIndex++;
+    if (slideIndex> slides.length) {slideIndex = 1}    
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";  
+    dots[slideIndex-1].className += " active";
+    setTimeout(showSlides, 9000); // Change image every 8 seconds
+}
+
+function plusSlides(position) {
+    slideIndex +=position;
+    if (slideIndex> slides.length) {slideIndex = 1}
+    else if(slideIndex<1){slideIndex = slides.length}
+    for (i = 0; i < slides.length; i++) {
+       slides[i].style.display = "none";  
+    }
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";  
+    dots[slideIndex-1].className += " active";
+}
+
+function currentSlide(index) {
+    if (index> slides.length) {index = 1}
+    else if(index<1){index = slides.length}
+    for (i = 0; i < slides.length; i++) {
+       slides[i].style.display = "none";  
+    }
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[index-1].style.display = "block";  
+    dots[index-1].className += " active";
+}
+    
+    
+    
 </script>
     
 </body>    
